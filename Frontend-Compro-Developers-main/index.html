@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>Beranda</title>
+    <!-- Untuk membuat icon pada title -->
+    <link rel="icon" href="./public/image-24removebgpreview-1@2x.png" type="image/x-icon" />
+    <!-- cdnjs CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto Mono:wght@700&display=swap" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="home-page">
+      <section class="f-r-a-m-e-home-page">
+        <div class="page-home">
+          <img class="page-home-child" alt="" src="./public/rectangle-80@2x.png" />
+
+          <b class="youth-creativity"> </b>
+          <div class="vector-parent">
+            <img class="vector-icon" alt="" src="./public/vector.svg" />
+            <input class="selamat-datangsilakan-temukan" type="text" placeholder="Selamat Datang,temukan yang anda minati!" />
+          </div>
+        </div>
+        <div class="search-engine" style="padding: 0vw">
+          <div class="" style="height: fit-content">
+            <div class="" style="display: flex; padding-left: 1vw; padding: 0.3vw; align-items: center">
+              <img class="vector-icon1" alt="" src="./public/icon-search.png" style="float: left; width: 3.5vw; height: auto" />
+              <input class="search-engine-child" style="font-size: 16px; color: black; width: 31.4vw; margin: 0%; float: right" placeholder="Selamat datang! Temukan minat Anda!" type="text" />
+              <button id="search-button" style="color:white;background-color: var(--color-cornflowerblue-100); padding: 1vw; border-radius: 1.2vw; border: none; width: 6vw" onclick="button()">Cari</button>
+            </div>
+            <div id="found" style="display: none">
+              <hr style="margin: 0%" />
+              <div id="option-search"></div>
+            </div>
+          </div>
+        </div>
+        <img class="image-24-removebg-preview-1-icon" loading="lazy" alt="" src="./public/image-24removebgpreview-1@2x.png" />
+
+        <div class="menu-long-capsule-shape" style="min-width: fit-content">
+          <div class="home-button-when-got-click-wil">
+            <b class="so-when-this">Beranda</b>
+          </div>
+          <div class="home-button-when-got-click-wil1" id="homeButtonWhenGotClickWil0">
+            <b class="so-when-this1">Rekomendasi</b>
+          </div>
+          <div class="home-button-when-got-click-wil2" id="homeButtonWhenGotClickWil1">
+            <b class="so-when-this2">Trending</b>
+          </div>
+          <div class="home-button-when-got-click-wil3" id="homeButtonWhenGotClickWil2">
+            <b class="so-when-this3">Tentang Kami</b>
+          </div>
+        </div>
+        <button class="home-button-when-got-click-wil4" id="homeButtonWhenGotClickWil3">
+          <b class="home-button-when">HUBUNGI KAMI</b>
+        </button>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <h3>Youth Creativity</h3>
+        <p>Memberi informasi serta mempermudah anak muda untuk mengembangkan kreativitas mereka pada zaman sekarang.</p>
+        <ul class="icon">
+          <li>
+            <a href=""><i class="fa-solid fa-phone"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa-solid fa-envelope"></i></a>
+          </li>
+          <li>
+            <a href=""><i class="fa-solid fa-location-dot"></i></a>
+          </li>
+        </ul>
+        <div class="footer-bottom">
+          <p>Created by Compro Developers</p>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      var searchengine = document.getElementsByClassName('search-engine')[0];
+      var found = document.getElementById('found');
+      var optionsearch = document.getElementById('option-search');
+      var searchinput = document.getElementsByClassName('search-engine-child')[0];
+
+      searchinput.addEventListener('keydown', function () {
+        if (event.keyCode === 13) {
+          searchtitle();
+        }
+      });
+
+      searchinput.addEventListener('blur', function () {
+        setTimeout(function () {
+          pencariantidakditemukan();
+        }, 250);
+      });
+      function button() {
+        setTimeout(function () {
+          searchtitle();
+        }, 260);
+      }
+      searchinput.addEventListener('focus', function () {
+        searchtitle();
+      });
+
+      function searchtitle() {
+        const request = 'searchtittle';
+        const query = searchinput.value;
+        console.log(query);
+        if (query === '') {
+          refresh();
+          pencariantidakditemukan();
+        } else {
+          $.ajax({
+            url: 'connection.php',
+            type: 'POST',
+            data: {
+              request: request,
+              query: query,
+            },
+            success: function (response) {
+              console.log(response);
+              let hasil = JSON.parse(response);
+
+              if (hasil.status === 'success') {
+                refresh();
+                pencarianditemukan();
+                const arraynama = hasil['title'];
+                const arraycategory = hasil['category'];
+                const arrayid = hasil['id'];
+                let no = 0;
+                let optionsearch = document.getElementById('option-search');
+                for (const key in arraynama) {
+                  no += 1;
+                  console.log(no);
+                  if (no > 5) {
+                    break;
+                  } else {
+                    optionsearch.innerHTML += `
+                      <ul style="margin: 0%;margin-bottom: 0vw;padding: 0%;padding: 0.5vw;background-color: hsla(60, 100%, 50%,0);border-top: 0vw solid rgba(0, 0, 0,0.3);">
+                        <li style="list-style: none;padding: 0%;margin: 0%;background-color: hsla(300, 76%, 72%,0);text-align: left;display: flex;align-items: center;">
+                          <img class="vector-icon1" alt="" src="./public/icon-search.png" style="float: left;width: 2vw;height: auto;"/> 
+                          <a href="readmore.html?id=${arrayid[key]}&c=${arraycategory[key]}" style="text-decoration: none;">${arraynama[key].substring(0, 54)}</a> 
+                        </li>
+                      </ul> 
+                        `;
+                  }
+                }
+              } else {
+                pencariantidakditemukan();
+              }
+            },
+          });
+        }
+      }
+      refresh();
+      function refresh() {
+        let optionsearch = document.getElementById('option-search');
+        optionsearch.innerHTML = '';
+      }
+      function pencarianditemukan() {
+        var found = document.getElementById('found');
+        found.style.display = 'block';
+      }
+      function pencariantidakditemukan() {
+        var found = document.getElementById('found');
+        found.style.display = 'none';
+      }
+
+      var homeButtonWhenGotClickWil0 = document.getElementById('homeButtonWhenGotClickWil0');
+      if (homeButtonWhenGotClickWil0) {
+        homeButtonWhenGotClickWil0.addEventListener('click', function (e) {
+          window.location.href = './rekomendasi-page.html';
+        });
+      }
+
+      var homeButtonWhenGotClickWil1 = document.getElementById('homeButtonWhenGotClickWil1');
+      if (homeButtonWhenGotClickWil1) {
+        homeButtonWhenGotClickWil1.addEventListener('click', function (e) {
+          window.location.href = './trending.html';
+        });
+      }
+
+      var homeButtonWhenGotClickWil2 = document.getElementById('homeButtonWhenGotClickWil2');
+      if (homeButtonWhenGotClickWil2) {
+        homeButtonWhenGotClickWil2.addEventListener('click', function (e) {
+          window.location.href = './tentang-page.html';
+        });
+      }
+
+      var homeButtonWhenGotClickWil3 = document.getElementById('homeButtonWhenGotClickWil3');
+      if (homeButtonWhenGotClickWil3) {
+        homeButtonWhenGotClickWil3.addEventListener('click', function (e) {
+          window.location.href = './call-page.html';
+        });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

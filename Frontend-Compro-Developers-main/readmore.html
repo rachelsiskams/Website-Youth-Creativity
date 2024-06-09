@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selengkapnya</title>
+    <!-- Untuk membuat icon pada title -->
+    <link rel="icon" href="./public/image-24removebgpreview-1@2x.png" type="image/x-icon">
+
+    <!-- cdnjs CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./read-more.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto Mono:wght@700&display=swap" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="read-more">
+      <section class="page-button">
+        <img class="main-container-icon" alt="" src="./public/main-container@2x.png" />
+
+        <div class="page-button-inner">
+          <div class="frame-parent">
+            <header class="long-capsule-menu-parent">
+              <div class="long-capsule-menu">
+                <img class="image-24-removebg-preview-1-icon1" loading="lazy" alt="" src="./public/image-24removebgpreview-1@2x.png" />
+              </div>
+              <nav class="menu-long-capsule-shape1" id="menuLongCapsuleShape">
+                <div class="home-button-when-got-click-wil5" id="idhome">
+                  <b class="so-when-this4">Beranda</b>
+                </div>
+                <div class="home-button-when-got-click-wil6" id="homeButtonWhenGotClickWil1">
+                  <b class="so-when-this5">Rekomendasi</b>
+                </div>
+                <div class="home-button-when-got-click-wil7" id="homeButtonWhenGotClickWil2">
+                  <b class="so-when-this6">Trending</b>
+                </div>
+                <div class="home-button-when-got-click-wil8" id="homeButtonWhenGotClickWil3">
+                  <b class="so-when-this7">Tentang Kami</b>
+                </div>
+              </nav>
+              <button class="home-button-when-got-click-wil9" id="homeButtonWhenGotClickWil">
+                <b class="so-when-this8">HUBUNGI KAMI</b>
+              </button>
+          </div>
+        </div>
+        <!-- frame -->
+            <div class="wrapper">
+              <div class="text-box">
+                <div style="text-align: center;justify-content: center;display: flex;">
+                  <h2 class="d-flex align-items-stretch" style="text-align: center;margin-bottom: 5vw;" id="title">display</h2>
+                </div>
+                <img src="" id="img" style="padding-top: 0.5vw;" alt="Kolaborasi Anak Muda dan Teknologi, Majukan Pariwisata">
+                <p class="section" id="top-section" style="text-align: justify;margin: 0%;color: rgba(0, 0, 0, 0.75);margin-bottom: 0.4vw;"></p>
+                <p class="section" id="bottom-section" style="text-align: justify;margin: 0%;"></p>
+              </div>
+            </div>
+            <!-- end frame -->
+        </div>
+      </section>
+    </div>
+         <!-- Footer -->
+         <footer>
+          <div class="footer-content">
+            <h3>Youth Creativity</h3>
+            <p>Memberi informasi serta mempermudah anak muda untuk mengembangkan kreativitas mereka pada zaman sekarang.</p>
+            <ul class="icon">
+              <li>
+                <a href=""><i class="fa-solid fa-phone"></i></a>
+              </li>
+              <li>
+                <a href=""><i class="fa-solid fa-envelope"></i></a>
+              </li>
+              <li>
+                <a href=""><i class="fa-solid fa-location-dot"></i></a>
+              </li>
+            </ul>
+            <div class="footer-bottom">
+              <p>Created by Compro Developers</p>
+            </div>
+          </div>
+        </footer>
+          
+          <!-- End Footer -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+          <script>
+checkparams()
+function checkparams(){
+    const searchparam = new URLSearchParams(window.location.search);
+    const id = searchparam.get('id');
+    const c = searchparam.get('c');
+    var category;
+    if (c === "rm"){
+      category = "rm"
+    } else {
+      category = "tr"
+    }
+    console.log(c)
+    const request = "readmorebyid";
+    $.ajax({
+        url : "connection.php",
+        type : "POST",
+        data : {
+            request : request,
+            id : id,
+            c : c 
+        }, success: function(response){
+            console.log(response)
+            let hasil = JSON.parse(response);
+            if (hasil.status === "success"){
+              const texttitle = hasil["title"];
+                const srcimg = hasil["img"];
+                const id = hasil["id"];
+                const texttopsection = hasil["sectiontop"];
+                const textbottomsection = hasil["sectionbottom"];
+                let titleid = document.getElementById("title")
+                let img = document.getElementById("img")
+                let topsection = document.getElementById("top-section")
+                let bottomsection = document.getElementById("bottom-section")
+
+                titleid.innerHTML = `${texttitle}`
+                document.title = `${texttitle}`
+                topsection.innerHTML = `&nbsp&nbsp&nbsp&nbsp${texttopsection}`
+                if (c === "rm"){
+                  img.src = `src/recommend/image${id}.png` 
+                  console.log("rekomend")
+                } 
+                if (c === "tr"){
+                  img.src = `src/trending/image${srcimg}.png` 
+                  console.log("trending")
+                }
+                let stringtop = `${texttopsection}`
+                if (stringtop.includes("\r\n") === true){
+                  let arraysectiontop = stringtop.split("\r\n")
+                  for (const key in arraysectiontop){
+                    if (key == 0){
+                      topsection.innerHTML += `&nbsp&nbsp&nbsp&nbsp ${arraysectiontop[key]}`
+                    } else {
+                      topsection.innerHTML += `<br><br> &nbsp&nbsp&nbsp&nbsp${arraysectiontop[key]}`
+                    }
+                  }
+                }
+                let stringbottom = `${textbottomsection}`
+                if (stringbottom.includes("\r\n") === true){
+                  let arraysection = stringbottom.split("\r\n")
+                  for (const key in arraysection){
+                    console.log(arraysection[key])
+                    if (key == 0){
+                      bottomsection.innerHTML += `&nbsp&nbsp&nbsp&nbsp ${arraysection[key]}`
+                    } else {
+                      bottomsection.innerHTML += `<br><br>&nbsp&nbsp&nbsp${arraysection[key]}`
+                    }
+                  }
+                } 
+                
+            } else {
+                pencariantidakditemukan()
+            }
+        }
+    })
+}
+
+            var idhome = document.getElementById(
+              "idhome"
+            );
+            if (idhome) {
+              idhome.addEventListener("click", function (e) {
+                window.location.href = "./index.html";
+              });
+            }
+            var homeButtonWhenGotClickWil1 = document.getElementById(
+              "homeButtonWhenGotClickWil1"
+            );
+            if (homeButtonWhenGotClickWil1) {
+              homeButtonWhenGotClickWil1.addEventListener("click", function (e) {
+                window.location.href = "./rekomendasi-page.html";
+              });
+            }
+            
+            var homeButtonWhenGotClickWil2 = document.getElementById(
+              "homeButtonWhenGotClickWil2"
+            );
+            if (homeButtonWhenGotClickWil2) {
+              homeButtonWhenGotClickWil2.addEventListener("click", function (e) {
+                window.location.href = "./trending.html";
+              });
+            }
+            
+            var homeButtonWhenGotClickWil3 = document.getElementById(
+              "homeButtonWhenGotClickWil3"
+            );
+            if (homeButtonWhenGotClickWil3) {
+              homeButtonWhenGotClickWil3.addEventListener("click", function (e) {
+                window.location.href = "./tentang-page.html";
+              });
+            }
+            
+            // var menuLongCapsuleShape = document.getElementById("menuLongCapsuleShape");
+            // if (menuLongCapsuleShape) {
+            //   menuLongCapsuleShape.addEventListener("click", function (e) {
+            //     window.location.href = "./index.html";
+            //   });
+            // }
+            
+            var homeButtonWhenGotClickWil = document.getElementById(
+              "homeButtonWhenGotClickWil"
+            );
+            if (homeButtonWhenGotClickWil) {
+              homeButtonWhenGotClickWil.addEventListener("click", function (e) {
+                window.location.href = "./call-page.html";
+              });
+            }
+            </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
